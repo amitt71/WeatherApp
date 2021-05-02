@@ -1,0 +1,10 @@
+.favoriteCity {
+    flex-grow: 1;
+    text-align: center;
+    border: 2px whitesmoke outset;
+    margin:20px;
+    .temperature:after{
+        content: "\00b0";
+    }
+
+}

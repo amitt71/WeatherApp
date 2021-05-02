@@ -1,0 +1,21 @@
+.header { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+    background: linear-gradient(45deg, #4180aa, transparent);
+    font-size: 30px;
+    border-radius: 20px;
+    .title {
+            color:whitesmoke;
+            font-family: cursive;
+            transition: all 0.5s;
+            &:hover {
+                font-size: 40px;
+                font-weight: bolder;
+                color:rgba(40, 40, 40, 0.7);
+
+            }
+    }
+}

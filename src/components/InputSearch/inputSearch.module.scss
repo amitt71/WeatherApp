@@ -1,0 +1,39 @@
+  .inputSearch {
+
+    display: flex;
+    height: 20vh;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    ::placeholder {
+      color:rgb(44, 0, 126);
+      opacity: 0.4;
+      font-weight: bold;
+    }
+
+    .inputField {
+        font-family: cursive;
+        font-size: larger;
+        border: 3px solid whitesmoke;
+        outline: none;
+        padding: 5px;
+        color: rgb(44, 0, 126);
+        font-weight: bold;
+        background: transparent;
+        border-radius: 4px;
+        background-image: url('../../images/search.svg');
+        background-repeat: no-repeat;
+        background-position: 1% 50%;
+        text-indent:30px;
+
+
+        &:focus {
+          outline: #4180aa;
+          border:3px solid #4180aa;
+      }
+      
+  }
+
+}
+  
