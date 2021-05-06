@@ -1,5 +1,13 @@
+@import '../../style/mixin.module.scss';
+@import '../../style//variables';
 .container { 
     display: grid;
     grid-template-columns: repeat(5,1fr);
     grid-column-gap: 20px;
+
+    @include mediaQueryMaxWidth($LG){
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+    }
 }

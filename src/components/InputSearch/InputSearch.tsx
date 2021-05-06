@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForecastsAction as FetchForecastsAction } from '../../store/actions/forecastActions';
-import { getMockForecastsByCity } from '../../API/mock';
+import { useLocation, useHistory } from 'react-router-dom'
 import classes from './inputSearch.module.scss';
 import { State } from '../../types/stateType';
-import { useState } from 'react';
 export const InputSearch = () => {
-
+    const location = useLocation();
+    const history = useHistory();
     const dispatch = useDispatch();
     const forecasts = useSelector((state: State) => {
         return state.forecastsReducer.forecasts;
@@ -13,7 +13,11 @@ export const InputSearch = () => {
     const OnKeyDown = async (e: any) => {
         if (e.key === 'Enter') {
             const cityValue = e.target.value;
+            if (location.pathname !== '/') {
+                history.push('/');
+            }
             await FetchForecastsAction(dispatch, cityValue, forecasts);
+
         }
     }
 

@@ -3,3 +3,17 @@
     font-family: $font;
     font-size: $size;
 }
+
+@mixin mediaQueryMaxWidth($maxWidth) {
+    @media screen and(max-width:$maxWidth) {
+        @content
+    }
+
+}
+
+@mixin mediaQueryMinWidth($minWidth) {
+    @media screen and(min-width:$minWidth) {
+        @content
+    }
+
+}

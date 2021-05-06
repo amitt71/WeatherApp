@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { uptdateCurrentCity } from "../../store/actions/forecastActions";
 
 const FavoriteCity = (props: CityForecast) => {
-    const day = new Date(props.forecasts.DailyForecasts[0].Date).toString().split(' ')[0]
     const temperature = props.forecasts.DailyForecasts[0].Temperature;
     const history = useHistory();
     const dispatch = useDispatch();
@@ -28,7 +27,9 @@ const FavoriteCity = (props: CityForecast) => {
 
                     }
                 </span>
-                <img src={require(`../../images/${props.forecasts.DailyForecasts[0].Day.Icon}.png`).default} />
+                <img src={require(`../../images/${props.forecasts.DailyForecasts[0].Day.Icon}.png`).default}
+                    alt={props.city}
+                />
 
             </div>
         }</div>

@@ -1,6 +1,5 @@
 import { UPDATE_FAVORITES } from '../../types/reduxType';
 import { Dispatch } from 'redux';
-import { CityForecast } from '../../types/forecast';
 
 
 // Favorite Action  -->  change city favorite status

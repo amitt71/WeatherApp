@@ -2,7 +2,6 @@ import axios from "axios"
 import { locationURL, forecastURL } from '../types/strings';
 import { locationKeyConfig, forecastConfig } from '../helpers/config'
 import { Dispatch } from "redux";
-import { TelAviv, NewYork, Paris, Barcelona } from '../mockData/forecastsResponse'
 import {
     fetchRequestCityKeyToForecasts,
     fetchRequestCityToKeyFailure,
@@ -13,10 +12,8 @@ import {
     fetchCachedForecast
 } from "../store/actions/forecastActions";
 import { CityForecast } from "../types/forecast";
-import { useSelector } from 'react-redux';
-import { State } from "../types/stateType";
 import { Cached } from './cached';
-import { ApiError, API_KEY_LIMIT, createApiErrorObject, LOCATION_NOT_FOUND } from './../types/apiError';
+import { API_KEY_LIMIT, createApiErrorObject, LOCATION_NOT_FOUND } from './../types/apiError';
 import { FETCH_REQUEST_CITY_KEY_TO_FORECAST, FETCH_REQUEST_CITY_TO_KEY } from "../types/reduxType";
 /*
 Need to handle ERRORS!

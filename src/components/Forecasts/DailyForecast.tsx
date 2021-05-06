@@ -19,7 +19,7 @@ const DailyForecastComponent = (forecast: IdailyForecasts) => {
 
                     }
                 </span>
-                <img src={require(`../../images/${forecast.Day.Icon}.png`).default} />
+                <img alt={day} src={require(`../../images/${forecast.Day.Icon}.png`).default} />
 
             </div>
         }</div>

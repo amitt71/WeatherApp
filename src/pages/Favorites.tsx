@@ -13,8 +13,6 @@ const FavoritesPage = () => {
     return (
         <React.Fragment>
             <div className={classes.mainPage} >
-                <Headline text={'Favorites'} />
-                <div />
                 <FavoritesCities {...favoirtes} />
             </div>
         </React.Fragment>

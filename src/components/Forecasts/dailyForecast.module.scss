@@ -1,15 +1,14 @@
 @import '../../style/mixin.module.scss';
+@import '../../style/variables';
 
 .dailyForecastContainer {
-    flex-grow:1;
     border: 5px outset gainsboro;
     border-radius: 20px;
     border-style: ridge;
-    // background: linear-gradient( 45deg, rgb(137, 145, 219), #9c8db4);
-    // background : linear-gradient(90deg,#d1d3,#f2c2Aa);
     background : linear-gradient(120deg,rgba(32, 34, 27, 0.2),#969696);
     cursor: pointer;
 
+ 
     &:hover {
     background : linear-gradient(90deg,#d1d3,#f2c2Aa);
     opacity: 1;
@@ -19,6 +18,10 @@
 
     }
     .dailyForecast {
+        @include mediaQueryMaxWidth($LG){
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
         height: 100%;
         display: flex;
         flex-direction: column;

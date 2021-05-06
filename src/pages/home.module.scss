@@ -1,21 +1,20 @@
+@import '../style/mixin.module.scss';
+@import '../style/variables';
+
 .mainPage {
     display: grid;
     grid-template-rows: 0fr repeat(2, 1fr);
     height: 100%;
     border: 10px rgba(40,49,115,0.2) groove;
     border-radius: 25px;
+    
+    @include mediaQueryMaxWidth($LG){
+        grid-template-rows: 0fr 0.2fr 1fr;
+    }
     .headerContainer {
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         grid-template-areas: "badage badage default favorites " ;
-
-        .cityBadage {
-            grid-area: badage;
-            justify-self: center;
-            align-self: center;
-            font-size: 100px;
-            font-family: fantasy;
-            color:rgba(40, 40, 40, 0.7);
-        }
     }
 }

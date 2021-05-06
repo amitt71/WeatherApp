@@ -1,5 +1,7 @@
 import { CityForecast } from './forecast';
 import { ApiError } from './apiError';
+import { initialState as forecastInitialState } from '../store/reducers/forecastsReducer';
+import { initialState as favoritesInitialState } from '../store/reducers/favoritesReducer';
 
 export type stateForecastsType = {
     currentCity: CityForecast,
@@ -16,6 +18,11 @@ export type stateFavoritesType = {
 export type State = {
     forecastsReducer: stateForecastsType;
     favoritesReducer: stateFavoritesType;
+}
+
+export const initialState: State = {
+    forecastsReducer: forecastInitialState,
+    favoritesReducer: favoritesInitialState,
 }
 
 interface IcityToKey {

@@ -19,8 +19,8 @@ function App() {
   const NavBar = () => <Navbar />;
   return (
     <div className={classes.rootContainer}>
+      <Toastify />
       <Router>
-        <Toastify />
         <Header title={TITLE} render={NavBar} />
         <InputSearch />
         <Switch>

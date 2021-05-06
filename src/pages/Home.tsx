@@ -8,6 +8,7 @@ import { State } from "../types/stateType";
 import classes from './home.module.scss';
 import Spinner from "../components/spinner/spinner";
 import CityBadage from "../components/CityBadage/cityBadage";
+import cityBadageClasses from '../components/CityBadage/cityBadage.module.scss';
 
 const HomePage = () => {
     const weeklyForecast: CityForecast = useSelector((state: State) => state.forecastsReducer.currentCity);
@@ -26,7 +27,7 @@ const HomePage = () => {
         <React.Fragment>
             <div className={classes.mainPage} >
                 <div className={classes.headerContainer}>
-                    <CityBadage className={classes.cityBadage} city={weeklyForecast.city} />
+                    <CityBadage className={cityBadageClasses.cityBadage} city={weeklyForecast.city} />
                     <UpdateFavorite favoritesIds={favoritesIds} cityKey={cityKey} />
                 </div>
                 {
