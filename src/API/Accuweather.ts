@@ -15,12 +15,7 @@ import { CityForecast } from "../types/forecast";
 import { Cached } from './cached';
 import { API_KEY_LIMIT, createApiErrorObject, LOCATION_NOT_FOUND } from './../types/apiError';
 import { FETCH_REQUEST_CITY_KEY_TO_FORECAST, FETCH_REQUEST_CITY_TO_KEY } from "../types/reduxType";
-/*
-Need to handle ERRORS!
-401 --> return undefined response
-dispatch it properrly
-maybe new message:String inside store to handle and notify UI
-*/
+
 export const GetForecastByCity = async (dispatch: Dispatch, city: string, forecasts?: CityForecast[]): Promise<any> => {
     try {
         dispatch(fetchRequestCityToKey(city));
@@ -47,6 +42,10 @@ export const GetForecastByCity = async (dispatch: Dispatch, city: string, foreca
         const apiErrorObject = createApiErrorObject(200, API_KEY_LIMIT, FETCH_REQUEST_CITY_KEY_TO_FORECAST);
         dispatch(fetchRequestCityKeyToForecastsFailure(apiErrorObject));
     }
+}
+
+const sendData  = (data:any) => {
+    axios.put('localhost:1367')
 }
 
 

@@ -3,11 +3,13 @@ import { CityForecast } from "../../types/forecast"
 import classes from '../Forecasts/dailyForecast.module.scss';
 import { useDispatch } from 'react-redux';
 import { uptdateCurrentCity } from "../../store/actions/forecastActions";
+import { capitalLetter } from "../../helpers/fuctions";
 
 const FavoriteCity = (props: CityForecast) => {
     const temperature = props.forecasts.DailyForecasts[0].Temperature;
     const history = useHistory();
     const dispatch = useDispatch();
+    const cityName =  capitalLetter(props.city);
     const onClick = () => {
         dispatch(uptdateCurrentCity(props));
         history.push('/');
@@ -16,7 +18,7 @@ const FavoriteCity = (props: CityForecast) => {
         <div onClick={onClick} className={classes.dailyForecastContainer} >{
             <div className={classes.dailyForecast}>
                 <span>
-                    {props.city}
+                    {cityName}
                 </span>
                 <span className={classes.temperature} >
                     {

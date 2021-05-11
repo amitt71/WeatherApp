@@ -7,13 +7,12 @@ import fullHeart from '../../images/fullHeart1.svg';
 
 interface Iprops {
     cityKey: number;
-    favoritesIds: number[];
+    favorite:boolean;
 }
 const UpadteFavorite = (props: Iprops) => {
-    const isFavorite = props.favoritesIds.includes(props.cityKey);
     return (
         <div className={classes.favoriteContainer}>
-            <img alt='Favorite ' src={isFavorite ? fullHeart : heart} />
+            <img alt='Favorite ' src={props.favorite ? fullHeart : heart} />
             <Button value={props.cityKey} onClick={CreateFavoriteAction} text={ADD_TO_FAVORITES} />
         </div>
     )

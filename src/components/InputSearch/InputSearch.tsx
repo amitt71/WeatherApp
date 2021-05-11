@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForecastsAction as FetchForecastsAction } from '../../store/actions/forecastActions';
 import { useLocation, useHistory } from 'react-router-dom'
-import classes from './inputSearch.module.scss';
 import { State } from '../../types/stateType';
+import { capitalLetter } from '../../helpers/fuctions';
+import classes from './inputSearch.module.scss';
 export const InputSearch = () => {
     const location = useLocation();
     const history = useHistory();
@@ -16,7 +17,8 @@ export const InputSearch = () => {
             if (location.pathname !== '/') {
                 history.push('/');
             }
-            await FetchForecastsAction(dispatch, cityValue, forecasts);
+            const cityName = capitalLetter(cityValue);
+            await FetchForecastsAction(dispatch, cityName, forecasts);
 
         }
     }
