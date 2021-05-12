@@ -12,10 +12,9 @@ import {
 import { GetForecastByCity } from '../../API/Accuweather';
 import { CityForecast } from '../../types/forecast';
 import { Iforecasts } from '../../types/forecast';
-import { ApiError } from '../../types/apiError';
+import { IerrorObject } from '../../types/errorMessageObject';
 
 
-// Action Creator --> for submiting city  in the input
 export const fetchRequestCityToKey = (city: String) => {
     return {
         type: FETCH_REQUEST_CITY_TO_KEY,
@@ -25,22 +24,18 @@ export const fetchRequestCityToKey = (city: String) => {
     }
 }
 
-// Action Creator --> fetch request for Location key by city name has failed 
-export const fetchRequestCityToKeyFailure = (error: ApiError) => {
+export const fetchRequestCityToKeyFailure = (error: IerrorObject) => {
     return {
         type: FETCH_REQUEST_CITY_TO_KEY_FAILURE,
         payload: {
-            apiError: {
-                status: error.status,
-                message: error.message,
-                api: error.api
+            errorObject: {
+                ...error
             }
         }
     }
 }
 
 
-// Action Creator --> fetch request for Location key by city name has succeed 
 export const fetchRequestCityToKeySuccess = (cityKey: Number, city: String) => {
     return {
         type: FETCH_REQUEST_CITY_TO_KEY_SUCCESS,
@@ -51,7 +46,6 @@ export const fetchRequestCityToKeySuccess = (cityKey: Number, city: String) => {
     }
 }
 
-// Action Creator --> fetch request with cityKey (LocationKey) to retrive Forecasts.
 export const fetchRequestCityKeyToForecasts = (cityKey: string) => {
     return {
         type: FETCH_REQUEST_CITY_KEY_TO_FORECAST,
@@ -61,7 +55,6 @@ export const fetchRequestCityKeyToForecasts = (cityKey: string) => {
     }
 }
 
-// Action Creator --> fetch request with cityKey (LocationKey) to retrive Forecasts succeed.
 export const fetchRequestCityKeyToForecastsSuccess = (cityKey: string, city: string, forecasts: Iforecasts) => {
     const cityForecast: CityForecast = {
         cityKey,
@@ -74,7 +67,7 @@ export const fetchRequestCityKeyToForecastsSuccess = (cityKey: string, city: str
     }
 }
 
-export const fetchRequestCityKeyToForecastsFailure = (error: ApiError) => {
+export const fetchRequestCityKeyToForecastsFailure = (error: IerrorObject) => {
     return {
         type: FETCH_REQUEST_CITY_KEY_TO_FORECAST_FAILURE,
         payload: {

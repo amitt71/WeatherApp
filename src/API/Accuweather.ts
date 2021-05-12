@@ -13,7 +13,7 @@ import {
 } from "../store/actions/forecastActions";
 import { CityForecast } from "../types/forecast";
 import { Cached } from './cached';
-import { API_KEY_LIMIT, createApiErrorObject, LOCATION_NOT_FOUND } from './../types/apiError';
+import { API_KEY_LIMIT, createErrorObject, LOCATION_NOT_FOUND } from '../types/errorMessageObject';
 import { FETCH_REQUEST_CITY_KEY_TO_FORECAST, FETCH_REQUEST_CITY_TO_KEY } from "../types/reduxType";
 
 export const GetForecastByCity = async (dispatch: Dispatch, city: string, forecasts?: CityForecast[]): Promise<any> => {
@@ -26,7 +26,7 @@ export const GetForecastByCity = async (dispatch: Dispatch, city: string, foreca
             const respone = await axios.get(locationURL, locationKeyConfig(city));
             const { data: firstData, status: firstStatus } = respone;
             if (firstStatus === 200 && !firstData.length) {
-                const apiErrorObject = createApiErrorObject(200, LOCATION_NOT_FOUND, FETCH_REQUEST_CITY_TO_KEY);
+                const apiErrorObject = createErrorObject(200, LOCATION_NOT_FOUND, FETCH_REQUEST_CITY_TO_KEY);
                 dispatch(fetchRequestCityToKeyFailure(apiErrorObject))
                 return;
             }
@@ -39,7 +39,7 @@ export const GetForecastByCity = async (dispatch: Dispatch, city: string, foreca
             return { data, status, key: cityKey };
         }
     } catch (e) {
-        const apiErrorObject = createApiErrorObject(200, API_KEY_LIMIT, FETCH_REQUEST_CITY_KEY_TO_FORECAST);
+        const apiErrorObject = createErrorObject(200, API_KEY_LIMIT, FETCH_REQUEST_CITY_KEY_TO_FORECAST);
         dispatch(fetchRequestCityKeyToForecastsFailure(apiErrorObject));
     }
 }

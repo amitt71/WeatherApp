@@ -1,26 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
-import { ApiError } from "../../types/apiError";
+import { IerrorObject } from "../../types/errorMessageObject";
 import { State } from "../../types/stateType";
 import 'react-toastify/dist/ReactToastify.css';
 
 
 const Toastify = () => {
-    const apiError: ApiError = useSelector((state: State) => state.forecastsReducer.apiError);
-
+    const errorMessage = useSelector((state: State) => state.forecastsReducer.errorMessage);
+   
     useEffect(() => {
-        toast.info(apiError.message, {
+       
+        toast.dark(errorMessage.message, {
             position: 'top-center',
             autoClose: 5000,
             closeOnClick: true,
             pauseOnHover: true,
         })
-    }, [apiError]);
+        
+    }, [errorMessage]);
 
     return (
-        <ToastContainer />
+        <ToastContainer  />
     )
 }
+
 
 export default Toastify;

@@ -1,7 +1,11 @@
+// Api Error Messages : 
 export const LOCATION_NOT_FOUND = 'Location Not Found';
 export const API_KEY_LIMIT = `The allowed number of requests has been exceeded for today`;
 
-export interface ApiError {
+// User Intercation Error mesassages :
+export const EMPTY_INPUT = 'Enter City name';
+export const INVALID_INPUT = 'INVALID INPUT - NO API' 
+export interface IerrorObject {
     status: number,
     message: string | undefined,
     api: string,
@@ -13,12 +17,12 @@ export const defaultErrorMessage = {
     api: '',
 }
 
-export const createApiErrorObject = (status: number, message: string, api: string): ApiError => {
+export const createErrorObject = (status: number, message: string, api: string): IerrorObject => {
 
-    const apiError: ApiError = {
+    const errorObject: IerrorObject = {
         status,
         message,
         api,
     }
-    return apiError;
+    return errorObject;
 }

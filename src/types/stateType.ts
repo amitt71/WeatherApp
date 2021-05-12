@@ -1,5 +1,5 @@
 import { CityForecast } from './forecast';
-import { ApiError } from './apiError';
+import { IerrorObject } from './errorMessageObject';
 import { initialState as forecastInitialState } from '../store/reducers/forecastsReducer';
 import { initialState as favoritesInitialState } from '../store/reducers/favoritesReducer';
 
@@ -8,7 +8,7 @@ export type stateForecastsType = {
     keyCity: IcityToKey[],
     forecasts: CityForecast[],
     loading: boolean,
-    apiError: ApiError,
+    errorMessage: IerrorObject,
 }
 
 export type stateFavoritesType = {

@@ -12,14 +12,14 @@ import {
 } from '../../types/reduxType';
 import { CityForecast, defaultCityForecast } from '../../types/forecast';
 import { FETCH_CACHED_FORECAST } from './../../types/reduxType';
-import { defaultErrorMessage } from '../../types/apiError';
+import { defaultErrorMessage } from '../../types/errorMessageObject';
 
 export const initialState: stateForecastsType = {
     currentCity: defaultCityForecast,
     keyCity: [],
     forecasts: [],
     loading: false,
-    apiError: defaultErrorMessage,
+    errorMessage: defaultErrorMessage,
 }
 export const reducer: Reducer<stateForecastsType, IactionCreator> = (state = initialState, { type, payload }: IactionCreator) => {
     switch (type) {
@@ -47,7 +47,7 @@ export const reducer: Reducer<stateForecastsType, IactionCreator> = (state = ini
                 ...state,
                 currentCity: defaultCityForecast,
                 loading: false,
-                apiError: { ...payload.apiError },
+                errorMessage: { ...payload.errorObject },
             }
         }
         case FETCH_REQUEST_CITY_KEY_TO_FORECAST: {
@@ -79,7 +79,7 @@ export const reducer: Reducer<stateForecastsType, IactionCreator> = (state = ini
                 ...state,
                 currentCity: defaultCityForecast,
                 loading: false,
-                apiError: { ...payload.apiError }
+                errorMessage: { ...payload.errorObject }
             }
         }
         case UPDATE_CURRENT_CITY: {

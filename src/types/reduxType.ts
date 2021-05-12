@@ -1,7 +1,7 @@
 
 import { Action, AnyAction } from 'redux';
 import { CityForecast, Iforecasts } from './forecast';
-import { ApiError } from './apiError';
+import { IerrorObject } from './errorMessageObject';
 // SIDE EFFECT API
 export const FETCH_REQUEST_CITY_TO_KEY = 'FETCH_REQUEST_CITY_TO_KEY';
 export const FETCH_REQUEST_CITY_TO_KEY_SUCCESS = 'FETCH_REQUEST_CITY_TO_KEY_SUCCESS';
@@ -39,5 +39,5 @@ type Payload = {
     cityKey: string,
     forecasts: Iforecasts,
     currentCity: CityForecast,
-    apiError: ApiError,
+    errorObject: IerrorObject,
 }

@@ -8,3 +8,10 @@ export const capitalLetter = (word:string) => {
      const wordcapitalLetter  = word.charAt(0).toUpperCase() + word.slice(1);
      return wordcapitalLetter;
 }
+
+export const isEmptyString = ( strInput: string) : boolean =>  {
+    if( !strInput){
+        return false;
+    }
+    return true;
+}

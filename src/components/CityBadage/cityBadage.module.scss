@@ -1,8 +1,21 @@
+@import "../../style/mixin.module.scss";
+@import "../../style/variables";
+
 .cityBadage {
-    grid-area: badage;
-    justify-self: center;
-    align-self: center;
-    font-size: calc(5vw + 1rem);
-    font-family: fantasy;
-    color:rgba(40, 40, 40, 0.7);
+  @include mediaQueryMaxWidth($MED) {
+    margin-left: 0px;
+    font-size: 1.5rem;
+  }
+  @include mediaQueryMaxWidth($SM) {
+    font-size: 1rem !important;
+  }
+  grid-area: badage;
+  justify-self: center;
+  align-self: center;
+  font-size: calc(5vw + 1rem);
+  font-family: Verdana;
+  font-weight: bolder;
+  color: rgba(40, 40, 40, 0.7);
+  -webkit-text-stroke: 1px lavenderblush;
+  margin-left: 1rem;
 }

@@ -1,55 +1,58 @@
-
-@import '../../style/mixin.module.scss';
-@import '../../style//variables';
+@import "../../style/mixin.module.scss";
+@import "../../style//variables";
 
 .customButton {
-  @include mediaQueryMaxWidth($EX_SM){
-    padding:10px;
+  @include mediaQueryMaxWidth($SM) {
+    padding: 5px !important;
+    font-size: 0.5rem;
+    font-size: 12px !important;
   }
-        border-radius: 4px;
-        background: linear-gradient(45deg,#f2c2Aa, #d1d3);
-        color: #FFFFFF;
-        text-align: center;
-        font-size: calc(0.5vw + 0.5rem);
-        padding: 20px;
-        transition:  0.5s;
-        cursor: pointer;
-        margin: 0.1rem;
-        font-family: cursive;
-        border-radius: 10px;
-        border: 2px white solid;
-  
-        &:hover {
-          color :#4180aa;
-          border: 2px #5a55537a double;
-          transition: 0.5s;
-        }
-        &:active{
-          color :rgba(239, 63, 255, 0.836);
-        }
-       span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-      }
-       span:after {
-        content: '\00bb';
-        color:#4180aa;
-        position: absolute;
-        opacity: 0;
-        top: 0;
-        bottom: -55px;
-        transition: 0.5s;
-      }
-      
-      &:hover span {
-        padding-right: 25px;
-      }
-      
-      &:hover span:after {
-        opacity: 1;
-      }
+  @include mediaQueryMaxWidth($MED) {
+    padding: 10px;
+    font-size: 14px;
+  }
+  border-radius: 4px;
+  background: linear-gradient(45deg, #f2c2aa, #d1d3);
+  color: #ffffff;
+  text-align: center;
+  font-size: 1rem;
+  padding: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+  margin: 0.1rem;
+  font-family: cursive;
+  border-radius: 10px;
+  border: 2px white solid;
+
+  &:hover {
+    color: #4180aa;
+    border: 2px #5a55537a double;
+    transition: 0.5s;
+  }
+  &:active {
+    color: rgba(239, 63, 255, 0.836);
+  }
+  span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  span:after {
+    content: "\00bb";
+    color: #4180aa;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    bottom: -55px;
+    transition: 0.5s;
+  }
+
+  &:hover span {
+    padding-right: 25px;
+  }
+
+  &:hover span:after {
+    opacity: 1;
+  }
 }
-
-

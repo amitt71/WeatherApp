@@ -1,47 +1,43 @@
-@import '../../style/mixin.module.scss';
-@import '../../style/variables';
+@import "../../style/mixin.module.scss";
+@import "../../style/variables";
 
-  .inputSearch {
-    display: flex;
-    height: 20%;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+.inputSearch {
+  display: flex;
+  height: 20%;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 
-    ::placeholder {
-      color:rgb(44, 0, 126);
-      opacity: 0.4;
-    }
-
-    .inputField {
-      @include mediaQueryMaxWidth($LG){
-        font-size: 1rem;
-      }
-        font-family: cursive;
-        font-size: 2rem;
-        border: 3px solid whitesmoke;
-        outline: none;
-        padding: 5px;
-        color: rgb(44, 0, 126);
-        font-weight: bold;
-        background: transparent;
-        border-radius: 4px;
-        background-image: url('../../images/search.svg');
-        background-repeat: no-repeat;
-        background-position: 1% 50%;
-        text-indent:30px;
-
-
-        &:focus {
-          outline: #4180aa;
-          border:3px solid #4180aa;
-      }
-      
+  ::placeholder {
+    color: black;
+    opacity: 0.4;
   }
 
+  .inputField {
+    @include mediaQueryMaxWidth($LG) {
+      font-size: 1rem;
+    }
+    @include mediaQueryMaxWidth($MED) {
+      font-size: 0.6rem !important;
+      width: 80vw;
+    }
+    font-family: cursive;
+    font-size: 2rem;
+    border: 3px solid whitesmoke;
+    outline: none;
+    padding: 5px;
+    color: rgba(black, 0.7);
+    font-weight: bold;
+    background: transparent;
+    border-radius: 4px;
+    background-image: url("../../images/search.svg");
+    background-repeat: no-repeat;
+    background-position: 1% 50%;
+    text-indent: 30px;
 
-
+    &:focus {
+      outline: #4180aa;
+      border: 3px solid #4180aa;
+    }
+  }
 }
-  
-
-
