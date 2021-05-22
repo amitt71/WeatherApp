@@ -1,6 +1,6 @@
 
 import { CityForecast } from '../../types/forecast';
-import DailyForecastComponent from './DailyForecast';
+import DailyForecastComponent from './DailyForecast.component';
 import classes from './weeklyForecasts.module.scss'
 
 const WeeklyForecast = (props: CityForecast) => {

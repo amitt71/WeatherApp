@@ -16,9 +16,9 @@
     @include mediaQueryMaxWidth($MED) {
       justify-content: space-around;
     }
-    display: flex;
+    display: grid;
     justify-content: space-between;
     align-items: center;
-    grid-template-areas: "badage badage default favorites ";
+    grid-template-columns: 2fr 1fr;
   }
 }

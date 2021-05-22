@@ -1,7 +1,7 @@
 
 export interface Iforecasts {
     DailyForecasts: IdailyForecasts[],
-    Headline: Iheadline, // FIX ME Headline?
+    Headline: Iheadline,
 }
 
 export interface IdailyForecasts {
@@ -10,7 +10,7 @@ export interface IdailyForecasts {
     Temperature: Temperature;
     Day: DayNight;
     Night: DayNight;
-    Sources: string[], // FIX ME --> []
+    Sources: string[],
     MobileLink: string,
     Link: string,
 

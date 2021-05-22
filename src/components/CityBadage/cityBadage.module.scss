@@ -3,14 +3,12 @@
 
 .cityBadage {
   @include mediaQueryMaxWidth($MED) {
-    margin-left: 0px;
+    margin-left: 10px;
     font-size: 1.5rem;
   }
   @include mediaQueryMaxWidth($SM) {
     font-size: 1rem !important;
   }
-  grid-area: badage;
-  justify-self: center;
   align-self: center;
   font-size: calc(5vw + 1rem);
   font-family: Verdana;

@@ -1,5 +1,5 @@
 import { CityForecast } from "../../types/forecast";
-import FavoriteCity from "./favoriteCity";
+import FavoriteCity from "./favoriteCity.component";
 import classes from './favoritesCities.module.scss';
 
 const FavoritesCities = (props: CityForecast[]) => {

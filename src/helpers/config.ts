@@ -24,5 +24,17 @@ export const locationKeyConfig = (city: String) => {
     return config;
 }
 
+export const setCityForecastConfig = (params={}) => {
+    const config: AxiosRequestConfig = {
+           baseURL:'http://localhost:1337/search/forecasts',
+           headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+        },
+        params: {...params}
+    }
+    return config;
+}
+
 
 

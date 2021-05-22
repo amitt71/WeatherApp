@@ -2,15 +2,16 @@
 @import "../../style//variables";
 
 .customButton {
+  @include mediaQueryMaxWidth($MED) {
+    padding: 10px !important;
+    font-size: 14px !important;
+  }
+
   @include mediaQueryMaxWidth($SM) {
-    padding: 5px !important;
-    font-size: 0.5rem;
+    padding: 2px !important;
     font-size: 12px !important;
   }
-  @include mediaQueryMaxWidth($MED) {
-    padding: 10px;
-    font-size: 14px;
-  }
+
   border-radius: 4px;
   background: linear-gradient(45deg, #f2c2aa, #d1d3);
   color: #ffffff;
@@ -23,6 +24,7 @@
   font-family: cursive;
   border-radius: 10px;
   border: 2px white solid;
+  -webkit-font-smoothing: subpixel-antialiased !important;
 
   &:hover {
     color: #4180aa;

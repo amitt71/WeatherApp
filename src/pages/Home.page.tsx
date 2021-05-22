@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import WeeklyForecast from "../components/Forecasts/weeklyForecasts";
-import IsFavorite from '../components/FavoriteUpdate/updateFavorite';
-import Headline from '../components/ForecastTitle/headlineText';
+import WeeklyForecast from "../components/Forecasts/weeklyForecasts.component";
+import IsFavorite from '../components/FavoriteUpdate/updateFavorite.component';
+import Headline from '../components/ForecastTitle/headlineText.component';
 import { CityForecast } from "../types/forecast";
 import { State } from "../types/stateType";
 import classes from './home.module.scss';
-import Spinner from "../components/spinner/spinner";
-import CityBadage from "../components/CityBadage/cityBadage";
+import Spinner from "../components/spinner/spinner.component";
+import CityBadage from "../components/CityBadage/cityBadage.component";
 import cityBadageClasses from '../components/CityBadage/cityBadage.module.scss';
 import { isFavorite} from '../helpers/fuctions';
 const HomePage = () => {
@@ -18,7 +18,7 @@ const HomePage = () => {
     const cityKey = parseInt(weeklyForecast.cityKey);
     const favorite  = isFavorite(favoritesIds,cityKey); 
 
-    const renderBody = isLoading ? <Spinner /> :
+    const renderBody = isLoading ? <Spinner loading={true} color={'#f2c2Aa'} /> :
         (
             <React.Fragment>
                 <Headline text={text} />

@@ -1,8 +1,9 @@
-import { CityForecast } from "../types/forecast";
+import axios from 'axios';
+import { CityForecast, Iforecasts } from './../types/forecast';
+import { setCityForecastConfig } from '../helpers/config';
 
 
 export const Cached = (city: string, forecasts?: CityForecast[]) => {
-    try {
         if (!(forecasts && forecasts.length)) return null;
         for (const forecast of forecasts) {
             if (forecast.city === city) {
@@ -10,8 +11,19 @@ export const Cached = (city: string, forecasts?: CityForecast[]) => {
             }
         }
         return null;
-    } catch (e) {
-        const error = e;
-        console.log(error)
-    }
 }
+
+export const setCity = async (cityKey: string,cityName:string, forecasts : Iforecasts) => {
+    const cityForecast: CityForecast = {
+        city:cityName,
+        cityKey,
+        forecasts
+    } 
+        const city = JSON.stringify(cityForecast);
+         const response = await axios.post('http://localhost:1337/search/forecasts',{city:city},setCityForecastConfig());
+        }
+
+        export const getCity = async (cityKey: string) => {
+                 const {data} = await axios.get('http://localhost:1337/search/forecasts',setCityForecastConfig({'cityKey':cityKey}));
+                 return data;
+                }

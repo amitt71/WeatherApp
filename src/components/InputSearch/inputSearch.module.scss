@@ -11,6 +11,7 @@
   ::placeholder {
     color: black;
     opacity: 0.4;
+    font-size: 1.5rem;
   }
 
   .inputField {
@@ -22,7 +23,8 @@
       width: 80vw;
     }
     font-family: cursive;
-    font-size: 2rem;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    font-size: 1.5rem;
     border: 3px solid whitesmoke;
     outline: none;
     padding: 5px;

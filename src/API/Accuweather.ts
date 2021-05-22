@@ -12,9 +12,10 @@ import {
     fetchCachedForecast
 } from "../store/actions/forecastActions";
 import { CityForecast } from "../types/forecast";
-import { Cached } from './cached';
+import { Cached, getCity, setCity } from './cached';
 import { API_KEY_LIMIT, createErrorObject, LOCATION_NOT_FOUND } from '../types/errorMessageObject';
 import { FETCH_REQUEST_CITY_KEY_TO_FORECAST, FETCH_REQUEST_CITY_TO_KEY } from "../types/reduxType";
+import { Iforecasts } from './../types/forecast';
 
 export const GetForecastByCity = async (dispatch: Dispatch, city: string, forecasts?: CityForecast[]): Promise<any> => {
     try {
@@ -32,10 +33,18 @@ export const GetForecastByCity = async (dispatch: Dispatch, city: string, foreca
             }
             const cityKey = firstData[0].Key;
             dispatch(fetchRequestCityToKeySuccess(cityKey, city));
+
+            // CHECK IN REDIS
+            // const cityForecast  = await getCity(cityKey);
+
             dispatch(fetchRequestCityKeyToForecasts(cityKey));
-            const response2 = await axios.get(forecastURL, forecastConfig(cityKey));
-            const { data, status } = response2;
+            const forecasts = await axios.get(forecastURL, forecastConfig(cityKey));
+            const { data , status } : {data:Iforecasts,status:number} = forecasts;
             dispatch(fetchRequestCityKeyToForecastsSuccess(cityKey, city, data))
+            
+            //UPDATE IN REDIS
+            //await setCity(cityKey,city,data); 
+            
             return { data, status, key: cityKey };
         }
     } catch (e) {
@@ -43,9 +52,4 @@ export const GetForecastByCity = async (dispatch: Dispatch, city: string, foreca
         dispatch(fetchRequestCityKeyToForecastsFailure(apiErrorObject));
     }
 }
-
-const sendData  = (data:any) => {
-    axios.put('localhost:1367')
-}
-
 

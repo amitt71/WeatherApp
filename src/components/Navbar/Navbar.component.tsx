@@ -1,4 +1,4 @@
-import Button from "../Buttons/button";
+import Button from "../Buttons/button.component";
 import { Link } from 'react-router-dom';
 import classes from './navbar.module.scss';
 const Navbar = () => {

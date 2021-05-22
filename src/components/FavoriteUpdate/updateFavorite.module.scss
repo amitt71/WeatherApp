@@ -1,6 +1,18 @@
-.favoriteContainer { 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    grid-area:favorites;
+@import "../../style/variables.scss";
+@import "../../style/mixin.module.scss";
+
+.favoriteContainer {
+  img {
+    @include mediaQueryMaxWidth(550px) {
+      width: 70px;
+    }
+    @include mediaQueryMaxWidth($MED) {
+      width: 50px;
+    }
+    @include mediaQueryMaxWidth($SM) {
+      width: 30px;
+    }
+  }
+  cursor: pointer;
+  justify-self: end;
 }

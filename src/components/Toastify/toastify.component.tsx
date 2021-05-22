@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
-import { IerrorObject } from "../../types/errorMessageObject";
 import { State } from "../../types/stateType";
 import 'react-toastify/dist/ReactToastify.css';
 
