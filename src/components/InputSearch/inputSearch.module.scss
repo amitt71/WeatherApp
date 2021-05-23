@@ -11,19 +11,18 @@
   ::placeholder {
     color: black;
     opacity: 0.4;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
   }
 
   .inputField {
     @include mediaQueryMaxWidth($LG) {
       font-size: 1rem;
-    }
-    @include mediaQueryMaxWidth($MED) {
-      font-size: 0.6rem !important;
       width: 80vw;
     }
-    font-family: cursive;
-    -webkit-font-smoothing: subpixel-antialiased !important;
+    @include mediaQueryMaxWidth($MED) {
+      width: 80vw;
+    }
+    font-family: monospace;
     font-size: 1.5rem;
     border: 3px solid whitesmoke;
     outline: none;

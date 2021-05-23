@@ -39,8 +39,7 @@
     justify-content: space-evenly;
     align-items: center;
     border-width: 6px;
-    @include textStyle(whiteSmoke, cursive, 30px);
-    -webkit-font-smoothing: subpixel-antialiased !important;
+    @include textStyle(whiteSmoke, monospace, 30px);
 
     .temperature:after {
       content: "\00b0";

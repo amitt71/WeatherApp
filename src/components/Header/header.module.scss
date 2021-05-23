@@ -12,8 +12,7 @@
   border-radius: 20px;
   .title {
     color: whitesmoke;
-    font-family: cursive;
-    -webkit-font-smoothing: subpixel-antialiased !important;
+    font-family: monospace;
     transition: all 0.5s;
 
     @include mediaQueryMinWidth($EX_LG) {
@@ -28,7 +27,7 @@
       font-size: 20px;
     }
     @include mediaQueryMaxWidth($SM) {
-      font-size: 15px;
+      font-size: 25px;
     }
   }
 }
