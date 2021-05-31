@@ -1,9 +1,14 @@
 # WeatherApp
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-## Require 
-.env file including api key for accuweather API
+
+## Require
+
+.env file including:
+REACT_APP_API_KEY : api key for accuweather API
+
 ## Available Scripts
 
 In the project directory, you can run:
