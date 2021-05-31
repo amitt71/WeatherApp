@@ -8,16 +8,16 @@ const DailyForecastComponent = (forecast: IdailyForecasts) => {
     const day = new Date(forecast.Date).toString().split(' ')[0]
     const history = useHistory();
     const city = useSelector((state:State)=> state.forecastsReducer.currentCity.city);
-    const showDailyForecastInfo = () =>{
-        history.push({
-            pathname:`/forecastDaily/${city}/${day}`,
-            state:{
-                    EpochDate: forecast.EpochDate,
-            }
-        })
-    }
+    // const showDailyForecastInfo = () =>{
+    //     history.push({
+    //         pathname:`/forecastDaily/${city}/${day}`,
+    //         state:{
+    //                 EpochDate: forecast.EpochDate,
+    //         }
+    //     })
+    // }
     return (
-        <div onClick={showDailyForecastInfo} className={classes.dailyForecastContainer} >{
+        <div className={classes.dailyForecastContainer} >{
             <div className={classes.dailyForecast}>
                 <span>
                     {day}
