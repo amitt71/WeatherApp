@@ -24,6 +24,17 @@ export const locationKeyConfig = (city: String) => {
     return config;
 }
 
+
+export const weatherAppConfig = (city: String) => {
+    const config: AxiosRequestConfig = {
+        params: {
+            q: city,
+            appid: process.env.REACT_APP_OPEN_WEATHER_KEY,
+        }
+    }
+    return config;
+}
+
 export const setCityForecastConfig = (params={}) => {
     const config: AxiosRequestConfig = {
            baseURL:'http://localhost:1337/search/forecasts',

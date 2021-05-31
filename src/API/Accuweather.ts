@@ -12,10 +12,11 @@ import {
     fetchCachedForecast
 } from "../store/actions/forecastActions";
 import { CityForecast } from "../types/forecast";
-import { Cached, getCity, setCity } from './cached';
+import { Cached } from './cached';
 import { API_KEY_LIMIT, createErrorObject, LOCATION_NOT_FOUND } from '../types/errorMessageObject';
 import { FETCH_REQUEST_CITY_KEY_TO_FORECAST, FETCH_REQUEST_CITY_TO_KEY } from "../types/reduxType";
 import { Iforecasts } from './../types/forecast';
+
 
 export const GetForecastByCity = async (dispatch: Dispatch, city: string, forecasts?: CityForecast[]): Promise<any> => {
     try {
@@ -43,8 +44,10 @@ export const GetForecastByCity = async (dispatch: Dispatch, city: string, foreca
             dispatch(fetchRequestCityKeyToForecastsSuccess(cityKey, city, data))
             
             //UPDATE IN REDIS
-            //await setCity(cityKey,city,data); 
-            
+            // await setCity(cityKey,city,data); 
+
+            // ANOTHER FORECAST API SOURCE
+            // const openWeathwer : IOpenWeatherForecasts  =  await getForecastByCity(city);
             return { data, status, key: cityKey };
         }
     } catch (e) {

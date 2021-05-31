@@ -1,4 +1,5 @@
 
+import { CityForecast } from './../types/forecast';
 export  const isFavorite = (favoritesIds: number[], id:number)  : boolean =>  {
     return favoritesIds.includes(id);
 }
@@ -14,4 +15,8 @@ export const isEmptyString = ( strInput: string) : boolean =>  {
         return false;
     }
     return true;
+}
+
+export const extractDailyForecastInfo = (cityForcast : CityForecast, city:string, epochDate:number) => {
+            return cityForcast.forecasts.DailyForecasts.find(daily => daily.EpochDate === epochDate);    
 }

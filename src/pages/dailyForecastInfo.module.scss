@@ -1,0 +1,18 @@
+.mainPage {
+  height: 100%;
+  border: 10px rgba(40, 49, 115, 0.2) groove;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .dailyForecastContainer {
+    width: 90%;
+    height: 80%;
+    border: 5px outset gainsboro;
+    border-radius: 20px;
+    border-style: ridge;
+    background: linear-gradient(120deg, rgba(32, 34, 27, 0.2), #969696);
+    cursor: pointer;
+  }
+}

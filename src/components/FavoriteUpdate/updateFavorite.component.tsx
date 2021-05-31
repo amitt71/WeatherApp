@@ -1,4 +1,3 @@
-import Button from '../Buttons/button.component';
 import { CreateFavoriteAction } from '../../store/actions/favoritesAction';
 import classes from './updateFavorite.module.scss';
 import heart from '../../images/shallowHeart.svg';

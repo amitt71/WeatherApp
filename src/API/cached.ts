@@ -20,7 +20,7 @@ export const setCity = async (cityKey: string,cityName:string, forecasts : Ifore
         forecasts
     } 
         const city = JSON.stringify(cityForecast);
-         const response = await axios.post('http://localhost:1337/search/forecasts',{city:city},setCityForecastConfig());
+         await axios.post('http://localhost:1337/search/forecasts',{city:city},setCityForecastConfig());
         }
 
         export const getCity = async (cityKey: string) => {

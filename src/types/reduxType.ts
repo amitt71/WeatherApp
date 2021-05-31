@@ -2,6 +2,8 @@
 import { Action, AnyAction } from 'redux';
 import { CityForecast, Iforecasts } from './forecast';
 import { IerrorObject } from './errorMessageObject';
+import { ICityToKey} from '../types/stateType';
+
 // SIDE EFFECT API
 export const FETCH_REQUEST_CITY_TO_KEY = 'FETCH_REQUEST_CITY_TO_KEY';
 export const FETCH_REQUEST_CITY_TO_KEY_SUCCESS = 'FETCH_REQUEST_CITY_TO_KEY_SUCCESS';
@@ -12,9 +14,7 @@ export const FETCH_REQUEST_CITY_KEY_TO_FORECAST_FAILURE = 'FETCH_REQUEST_CITY_KE
 export const UPDATE_CURRENT_CITY = 'UPDATE_CURRENT_CITY';
 export const UPDATE_FAVORITES = 'UPDATE_FAVORITES';
 export const FETCH_CACHED_FORECAST = 'FETCH_CACHED_FORECAST';
-
-
-// ACTION CREATOR
+export const UPDATE_SUGGESTION_CITIES = 'UPDATE_SUGGESTION_CITIES';
 
 export interface IactionCreator {
     type: String,
@@ -26,6 +26,11 @@ export interface IfavoritesActionCreator {
     payload: {
         cityKey: number,
     },
+}
+
+export interface ICitySuggestionCreator {
+    type: string,
+    payload: CitySuggestionPayload,
 }
 
 export type Reducer<S = any, A extends Action = AnyAction> = (
@@ -40,4 +45,10 @@ type Payload = {
     forecasts: Iforecasts,
     currentCity: CityForecast,
     errorObject: IerrorObject,
+}
+
+type CitySuggestionPayload = {
+    citiesSuggestion: ICityToKey[],
+    potentialCity: string,
+    shouldSuggest:boolean,
 }

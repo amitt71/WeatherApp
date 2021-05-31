@@ -71,15 +71,12 @@ export const fetchRequestCityKeyToForecastsFailure = (error: IerrorObject) => {
     return {
         type: FETCH_REQUEST_CITY_KEY_TO_FORECAST_FAILURE,
         payload: {
-            apiError: {
-
-                status: error.status,
-                message: error.message,
-                api: error.api
+            errorObject: { 
+                ...error
+                }
             }
         }
     }
-}
 
 export const uptdateCurrentCity = (currentCity: CityForecast) => {
     return {
