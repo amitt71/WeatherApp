@@ -1,8 +1,5 @@
-import { useHistory } from 'react-router-dom'
 import { IdailyForecasts } from '../../types/forecast';
 import classes from './dailyForecast.module.scss';
-import { useSelector } from 'react-redux';
-import { State } from '../../types/stateType';
 
 const DailyForecastComponent = (forecast: IdailyForecasts) => {
     const day = new Date(forecast.Date).toString().split(' ')[0]
