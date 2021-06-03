@@ -6,8 +6,8 @@ import { State } from '../../types/stateType';
 
 const DailyForecastComponent = (forecast: IdailyForecasts) => {
     const day = new Date(forecast.Date).toString().split(' ')[0]
-    const history = useHistory();
-    const city = useSelector((state:State)=> state.forecastsReducer.currentCity.city);
+    // const history = useHistory();
+    // const city = useSelector((state:State)=> state.forecastsReducer.currentCity.city);
     // const showDailyForecastInfo = () =>{
     //     history.push({
     //         pathname:`/forecastDaily/${city}/${day}`,
