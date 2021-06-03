@@ -29,6 +29,7 @@ export const InputSearch = () => {
             setIsActive(false);
             setInputValue(city);
             await fetchForecastsAction(dispatch,city,forecasts);
+            history.push('/');
     }
 
     return (

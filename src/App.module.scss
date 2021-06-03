@@ -1,8 +1,7 @@
-.rootContainer { 
-    display: flex;
-    flex-flow:column;
-    height: inherit;
-    background: linear-gradient(45deg, #4180aa, beige);
-    border-radius:20px;
-
+.rootContainer {
+  display: flex;
+  flex-flow: column;
+  height: inherit;
+  background: linear-gradient(45deg, #4180aa, beige);
+  border-radius: 20px 20px 5px 5px;
 }

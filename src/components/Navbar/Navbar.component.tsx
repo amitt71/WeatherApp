@@ -5,8 +5,8 @@ const Navbar = () => {
 
     return (
         <div className={classes.navbarContainer}>
-            <Link to='/'><Button text={'Home'} /></Link>
-            <Link to='/favorites'><Button text={'Favorites'} /></Link>
+            <Link className={classes.link} to='/'><Button text={'Home'} /></Link>
+            <Link className =  {classes.link} to='/favorites'><Button text={'Favorites'} /></Link>
         </div>
     )
 }
