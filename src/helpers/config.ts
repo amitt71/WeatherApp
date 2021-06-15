@@ -48,4 +48,18 @@ export const setCityForecastConfig = (params={}) => {
 }
 
 
+export const setSuggestionsCitiesConfig = (params={}) => {
+    const config: AxiosRequestConfig = {
+           baseURL:'http://localhost:1337/search/autoComplete',
+           headers: {
+            'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+        },
+        params: {...params}
+    }
+    return config;
+}
+
+
+
 

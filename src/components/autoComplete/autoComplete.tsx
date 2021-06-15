@@ -9,7 +9,8 @@ interface IChildComponentProps {
 
 const AutoComplete =  (props: IChildComponentProps) => {
   
-    const {citiesSuggestion}  = useSelector((state:State) => state.citiesSuggestionReducer);
+    const suggestionsReducerState  = useSelector((state:State) => state.citiesSuggestionReducer);
+    const { citiesSuggestion,selected} = suggestionsReducerState;
         const onClick = async (e:any) => {
             const city = e.target.value;
 
@@ -20,7 +21,7 @@ const AutoComplete =  (props: IChildComponentProps) => {
 
         <div className={classes.autoCompleteContainer}>
             {
-               citiesSuggestion.map((potentialCity)=> <input type={'submit'} onChange={()=>{}} onClick={onClick}  key={potentialCity.key} value={potentialCity.city}/>)
+               citiesSuggestion.map((potentialCity,index=0)=> <input className={index === selected ? classes.selected: ''} type={'submit'} onChange={()=>{}} onClick={onClick}  key={potentialCity.key} value={potentialCity.city}/>)
             }
         </div>
         : null

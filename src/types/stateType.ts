@@ -19,6 +19,7 @@ export type stateFavoritesType = {
 
 export type stateInputSearchType = {
     citiesSuggestion: ICityToKey[],
+    selected:number,
 }
 
 export type State = {

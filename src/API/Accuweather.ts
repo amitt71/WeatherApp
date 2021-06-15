@@ -12,10 +12,39 @@ import {
     fetchCachedForecast
 } from "../store/actions/forecastActions";
 import { CityForecast } from "../types/forecast";
-import { Cached } from './cached';
+import { Cached, getCity, setCity } from './cached';
 import { API_KEY_LIMIT, createErrorObject, LOCATION_NOT_FOUND } from '../types/errorMessageObject';
 import { FETCH_REQUEST_CITY_KEY_TO_FORECAST, FETCH_REQUEST_CITY_TO_KEY } from "../types/reduxType";
 import { Iforecasts } from './../types/forecast';
+
+export const getForecastByCityKey = async (dispatch: Dispatch, city: string, cityKey:string) => {
+
+    dispatch(fetchRequestCityToKeySuccess(Number(cityKey), city));
+
+    /*
+    // CHECK IN REDIS
+    const cityForecast :CityForecast  = await getCity(cityKey);
+    if(!cityForecast){
+    */
+
+    dispatch(fetchRequestCityKeyToForecasts(cityKey));
+
+    const forecasts = await axios.get(forecastURL, forecastConfig(cityKey));
+    const { data , status } : {data:Iforecasts,status:number} = forecasts;
+    dispatch(fetchRequestCityKeyToForecastsSuccess(cityKey, city, data))
+    
+    //UPDATE IN REDIS
+    await setCity(cityKey,city,data); 
+
+    // ANOTHER FORECAST API SOURCE
+    // const openWeathwer : IOpenWeatherForecasts  =  await getForecastByCity(city);
+    return;
+    /*
+    }
+    dispatch(fetchRequestCityKeyToForecastsSuccess(cityForecast.cityKey,cityForecast.city,cityForecast.forecasts));
+    */
+    return;
+}
 
 
 export const GetForecastByCity = async (dispatch: Dispatch, city: string, forecasts?: CityForecast[]): Promise<any> => {
@@ -35,24 +64,10 @@ export const GetForecastByCity = async (dispatch: Dispatch, city: string, foreca
             const cityKey = firstData[0].Key;
             dispatch(fetchRequestCityToKeySuccess(cityKey, city));
 
-            // CHECK IN REDIS
-            // const cityForecast  = await getCity(cityKey);
-
-            dispatch(fetchRequestCityKeyToForecasts(cityKey));
-            const forecasts = await axios.get(forecastURL, forecastConfig(cityKey));
-            const { data , status } : {data:Iforecasts,status:number} = forecasts;
-            dispatch(fetchRequestCityKeyToForecastsSuccess(cityKey, city, data))
-            
-            //UPDATE IN REDIS
-            // await setCity(cityKey,city,data); 
-
-            // ANOTHER FORECAST API SOURCE
-            // const openWeathwer : IOpenWeatherForecasts  =  await getForecastByCity(city);
-            return { data, status, key: cityKey };
+            await getForecastByCityKey(dispatch,city,cityKey);
         }
     } catch (e) {
         const apiErrorObject = createErrorObject(200, API_KEY_LIMIT, FETCH_REQUEST_CITY_KEY_TO_FORECAST);
         dispatch(fetchRequestCityKeyToForecastsFailure(apiErrorObject));
     }
 }
-

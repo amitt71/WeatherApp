@@ -4,12 +4,17 @@ import {fetchRequestCityToKeyFailure as fetchEmptyInputErrorMessage} from '../st
 import { Dispatch } from 'redux';
 import { CityForecast } from '../types/forecast';
 import { createErrorObject, EMPTY_INPUT, INVALID_INPUT } from '../types/errorMessageObject';
-import { updateSuggestionCitiesAction } from '../store/actions/suggestionActions';
+import { updateSuggestionCitiesAction,updateSelectedSuggestion } from '../store/actions/suggestionActions';
 import { autoCompleteAPI } from '../API/autoComplete';
+import { getAutoComplete, setAutoComplete } from './../API/cached';
+import { ICityToKey } from '../types/stateType';
+import { getForecastByCityKey } from '../API/Accuweather';
 
-export const onKeyDownFunctionHandler = async (e : any, setIsActive:Function,history:any,location:any, dispatch:Dispatch,forecasts:CityForecast[]) => {
+export const onKeyDownFunctionHandler = async (e : any,setInputValue:Function, setIsActive:Function,history:any,location:any, dispatch:Dispatch,forecasts:CityForecast[],selected:number,suggestSelected:ICityToKey) => {
     if (e.key === 'Enter') {
-        const cityValue = e.target.value;
+        let cityValue;
+        selected > -1 ? cityValue = suggestSelected.city: cityValue = e.target.value;
+        setInputValue(cityValue);
         const isNotEmpty = isEmptyString(cityValue)
         setIsActive(false);
         if(isNotEmpty){
@@ -17,12 +22,21 @@ export const onKeyDownFunctionHandler = async (e : any, setIsActive:Function,his
             history.push('/');
         }
         const cityName = capitalLetter(cityValue);
-        await fetchForecastsAction(dispatch, cityName, forecasts);
+        selected > -1 ? await getForecastByCityKey(dispatch,suggestSelected.city,suggestSelected.key): 
+                    await fetchForecastsAction(dispatch, cityName, forecasts);
 
     }else{
         const emptyInputErrorObject = createErrorObject(0,EMPTY_INPUT,INVALID_INPUT);
         dispatch(fetchEmptyInputErrorMessage(emptyInputErrorObject));
     }
+}
+if(e.key === 'ArrowDown'){
+    const updateSelected = selected + 1;
+    dispatch(updateSelectedSuggestion(updateSelected));
+}
+if(e.key === 'ArrowUp'){
+    const updateSelected = selected - 1;
+    dispatch(updateSelectedSuggestion(updateSelected));
 }
 if(e.key === 'Escape'){
     setIsActive(false);
@@ -35,11 +49,17 @@ export const onChangeHandler = async (e: any,setInputValue:Function,setIsActive:
     const str = e.target.value;
     setInputValue(str);
     if(str && str.trim()){
-        const citiesSuggestion = await autoCompleteAPI(str);
-        if(citiesSuggestion){
+        
+        //const { autoComplete } = await getAutoComplete(str);
+        const citiesSuggestion = /*(autoComplete && autoComplete.length)? autoComplete :*/ await autoCompleteAPI(str);
+    if(citiesSuggestion){
         dispatch(updateSuggestionCitiesAction(citiesSuggestion));
         setIsActive(true);
-        }
+       
+        /*
+        if(!(autoComplete && autoComplete.length)) await setAutoComplete(str,citiesSuggestion);
+        */
+    }
     }else{
         setIsActive(false);
     }

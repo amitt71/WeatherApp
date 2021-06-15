@@ -15,6 +15,7 @@ export const UPDATE_CURRENT_CITY = 'UPDATE_CURRENT_CITY';
 export const UPDATE_FAVORITES = 'UPDATE_FAVORITES';
 export const FETCH_CACHED_FORECAST = 'FETCH_CACHED_FORECAST';
 export const UPDATE_SUGGESTION_CITIES = 'UPDATE_SUGGESTION_CITIES';
+export const UPDATE_SELECTED_SUGGESTION = 'UPDATE_SELECTED_SUGGESTION'; 
 
 export interface IactionCreator {
     type: String,
@@ -51,4 +52,5 @@ type CitySuggestionPayload = {
     citiesSuggestion: ICityToKey[],
     potentialCity: string,
     shouldSuggest:boolean,
+    selected:number,
 }

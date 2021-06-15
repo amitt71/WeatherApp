@@ -13,12 +13,12 @@ export const InputSearch = () => {
     const location = useLocation();
     const history = useHistory();
     const dispatch = useDispatch();
-    const forecasts = useSelector((state: State) => {
-        return state.forecastsReducer.forecasts;
-    })
-
+    const forecasts = useSelector((state: State) => state.forecastsReducer.forecasts );
+    const suggestionsReducer = useSelector((state:State) => state.citiesSuggestionReducer);
+    const selected = suggestionsReducer.selected;
+    const selectedCity = suggestionsReducer.citiesSuggestion[selected];
     const OnKeyDown = async (e: any) => {
-        await onKeyDownFunctionHandler(e,setIsActive,history,location,dispatch,forecasts);
+        await onKeyDownFunctionHandler(e,setInputValue,setIsActive,history,location,dispatch,forecasts,suggestionsReducer.selected,selectedCity);
     }
 
     const onChange = async (e:any) => {
