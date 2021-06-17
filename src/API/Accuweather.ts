@@ -20,29 +20,11 @@ import { Iforecasts } from './../types/forecast';
 export const getForecastByCityKey = async (dispatch: Dispatch, city: string, cityKey:string) => {
 
     dispatch(fetchRequestCityToKeySuccess(Number(cityKey), city));
-
-    /*
-    // CHECK IN REDIS
-    const cityForecast :CityForecast  = await getCity(cityKey);
-    if(!cityForecast){
-    */
-
     dispatch(fetchRequestCityKeyToForecasts(cityKey));
 
     const forecasts = await axios.get(forecastURL, forecastConfig(cityKey));
     const { data , status } : {data:Iforecasts,status:number} = forecasts;
     dispatch(fetchRequestCityKeyToForecastsSuccess(cityKey, city, data))
-    
-    //UPDATE IN REDIS
-    await setCity(cityKey,city,data); 
-
-    // ANOTHER FORECAST API SOURCE
-    // const openWeathwer : IOpenWeatherForecasts  =  await getForecastByCity(city);
-    return;
-    /*
-    }
-    dispatch(fetchRequestCityKeyToForecastsSuccess(cityForecast.cityKey,cityForecast.city,cityForecast.forecasts));
-    */
     return;
 }
 

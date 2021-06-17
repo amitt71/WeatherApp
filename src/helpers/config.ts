@@ -16,9 +16,6 @@ export const forecastConfig = (cityKey: String) => {
 
 export const locationKeyConfig = (city: String) => {
     const config: AxiosRequestConfig = {
-        headers:{
-            'Access-Control-Allow-Origin':'*'
-        },
         params: {
             q: city,
             apikey: process.env.REACT_APP_API_KEY,
