@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CityForecast, Iforecasts } from './../types/forecast';
 import { setCityForecastConfig, setSuggestionsCitiesConfig } from '../helpers/config';
-import { autoCompleteCachedURL, autoCompleteURL, forecastCachedURL } from './../types/strings';
+import { autoCompleteCachedURL, forecastCachedURL } from './../types/strings';
 import { ICityToKey } from '../types/stateType';
 
 

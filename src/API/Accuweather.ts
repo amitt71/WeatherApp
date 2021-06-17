@@ -12,7 +12,7 @@ import {
     fetchCachedForecast
 } from "../store/actions/forecastActions";
 import { CityForecast } from "../types/forecast";
-import { Cached, getCity, setCity } from './cached';
+import { Cached } from './cached';
 import { API_KEY_LIMIT, createErrorObject, LOCATION_NOT_FOUND } from '../types/errorMessageObject';
 import { FETCH_REQUEST_CITY_KEY_TO_FORECAST, FETCH_REQUEST_CITY_TO_KEY } from "../types/reduxType";
 import { Iforecasts } from './../types/forecast';
@@ -23,7 +23,7 @@ export const getForecastByCityKey = async (dispatch: Dispatch, city: string, cit
     dispatch(fetchRequestCityKeyToForecasts(cityKey));
 
     const forecasts = await axios.get(forecastURL, forecastConfig(cityKey));
-    const { data , status } : {data:Iforecasts,status:number} = forecasts;
+    const { data  } : {data:Iforecasts,status:number} = forecasts;
     dispatch(fetchRequestCityKeyToForecastsSuccess(cityKey, city, data))
     return;
 }

@@ -6,7 +6,6 @@ import { CityForecast } from '../types/forecast';
 import { createErrorObject, EMPTY_INPUT, INVALID_INPUT } from '../types/errorMessageObject';
 import { updateSuggestionCitiesAction,updateSelectedSuggestion } from '../store/actions/suggestionActions';
 import { autoCompleteAPI } from '../API/autoComplete';
-import { getAutoComplete, setAutoComplete } from './../API/cached';
 import { ICityToKey } from '../types/stateType';
 import { getForecastByCityKey } from '../API/Accuweather';
 
